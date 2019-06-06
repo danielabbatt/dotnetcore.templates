@@ -3,13 +3,12 @@ using Microsoft.Extensions.Logging;
 using Serilog;
 using Serilog.Core;
 using System;
-using System.ServiceProcess;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace Templates.WindowsService
 {
-	public partial class MainService : ServiceBase, IHostedService
+	public class MainService : IHostedService, IDisposable
 	{
 		private const string EventLogSourceName = Program.ProductName;
 		private readonly Microsoft.Extensions.Logging.ILogger _logger;
@@ -22,54 +21,19 @@ namespace Templates.WindowsService
 		{
 			_logger = logger;
 			_eventLog = new LoggerConfiguration()
-				.WriteTo.EventLog(EventLogSourceName, manageEventSource: true)
+				.WriteTo.EventLog(EventLogSourceName, eventIdProvider: new SerilogEventLogIdProvider(), manageEventSource: true)
 				.CreateLogger();
 			_application = application;
 		}
 
-		/// <summary>
-		/// Tasks to perform on start
-		/// </summary>
-		protected override void OnStart(string[] args)
-		{
-			_eventLog.Information($"Starting Service Version {ThisAssembly.AssemblyFileVersion}...");
-			StartAsync(default)
-				.ConfigureAwait(false)
-				.GetAwaiter()
-				.GetResult();
-			_eventLog.Information("Service Started.");
-		}
-
-		/// <summary>
-		/// Tasks to perform on stop
-		/// </summary>
-		protected override void OnStop()
-		{
-			_eventLog.Information("Service Stopping...");
-			StopAsync(default)
-				.ConfigureAwait(false)
-				.GetAwaiter()
-				.GetResult();
-			_eventLog.Information("Service Stopped.");
-		}
-
-		/// <summary>
-		/// Tasks to perform on shutdown
-		/// </summary>
-		protected override void OnShutdown()
-		{
-			_eventLog.Information("Service Stopping due to shutdown...");
-			StopAsync(default)
-				.ConfigureAwait(false)
-				.GetAwaiter()
-				.GetResult();
-			_eventLog.Information("Service Stopped due to shutdown.");
-		}
-
 		public Task StartAsync(CancellationToken cancellationToken)
 		{
-			_logger.LogInformation($"Starting Service Version {ThisAssembly.AssemblyInformationalVersion}...");
-
+			var message = $"Starting Service Version {ThisAssembly.AssemblyInformationalVersion}...";
+			if (Program.IsRunningAsService)
+			{
+				_eventLog.Information(message);
+			}
+			_logger.LogInformation(message);
 			_executingTask = ExecuteAsync(_stoppingCts.Token);
 			return _executingTask.IsCompleted ? _executingTask : Task.CompletedTask;
 		}
@@ -82,7 +46,12 @@ namespace Templates.WindowsService
 
 		public async Task StopAsync(CancellationToken cancellationToken)
 		{
-			_logger.LogInformation("Stopping...");
+			var message = $"Stopping Service Version {ThisAssembly.AssemblyInformationalVersion}...";
+			if (Program.IsRunningAsService)
+			{
+				_eventLog.Information(message);
+			}
+			_logger.LogInformation(message);
 			if (_executingTask != null)
 			{
 				try
@@ -92,16 +61,21 @@ namespace Templates.WindowsService
 				finally
 				{
 					await Task.WhenAny(_executingTask, Task.Delay(-1, cancellationToken)).ConfigureAwait(false);
-					_logger.LogInformation("Stopped.");
+					message = $"Stopped Service Version {ThisAssembly.AssemblyInformationalVersion}...";
+					if (Program.IsRunningAsService)
+					{
+						_eventLog.Information(message);
+					}
+					_logger.LogInformation(message);
 				}
 			}
 		}
 
-		new public void Dispose()
+		public void Dispose()
 		{
 			_logger.LogInformation("Disposed.");
 			_stoppingCts.Cancel();
-			base.Dispose();
+			//base.Dispose();
 		}
 	}
 }

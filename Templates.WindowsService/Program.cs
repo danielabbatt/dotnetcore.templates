@@ -13,7 +13,7 @@ namespace Templates.WindowsService
 	public static class Program
 	{
 		public const string ProductName = "ExampleService";
-		private static bool IsRunningAsService => Console.IsInputRedirected;
+		internal static bool IsRunningAsService => Console.IsInputRedirected;
 
 		/// <summary>
 		/// Main execution class
