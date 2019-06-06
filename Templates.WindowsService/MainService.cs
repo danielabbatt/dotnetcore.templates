@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Templates.WindowsService
 {
-	public class MainService : ServiceBase, IHostedService
+	public partial class MainService : ServiceBase, IHostedService
 	{
 		private const string EventLogSourceName = Program.ProductName;
 		private readonly Microsoft.Extensions.Logging.ILogger _logger;
@@ -68,7 +68,7 @@ namespace Templates.WindowsService
 
 		public Task StartAsync(CancellationToken cancellationToken)
 		{
-			_logger.LogInformation($"Starting Service Version {ThisAssembly.AssemblyFileVersion}...");
+			_logger.LogInformation($"Starting Service Version {ThisAssembly.AssemblyInformationalVersion}...");
 
 			_executingTask = ExecuteAsync(_stoppingCts.Token);
 			return _executingTask.IsCompleted ? _executingTask : Task.CompletedTask;
