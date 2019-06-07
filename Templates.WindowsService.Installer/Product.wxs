@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- The name of the product -->
-<?define Name = "Templates WindowsService" ?>
-<!-- The manufacturer, for setup package publisher and folder info -->
 <?define Manufacturer = "Company Name" ?>
+<?define Name = "Templates WindowsService" ?>
+<?define ServiceName = "TemplatesWindowsService" ?>
+<?define DllName = "Templates.WindowsService.dll" ?>
+<?define ExeName = "Templates.WindowsService.exe" ?>
+<?define PublishPath = "$(var.Templates.WindowsService.TargetDir)\win-x64\publish" ?>
 
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"
 	 xmlns:util="http://schemas.microsoft.com/wix/UtilExtension">
@@ -39,31 +41,31 @@
 		</Directory>
 		<!-- The files inside this DirectoryRef are linked to the Test Service directory via INSTALLFOLDER -->
 		<DirectoryRef Id="INSTALLFOLDER">
-			<Component Id="Templates.WindowsService.dll">
+			<Component Id="$(var.DllName)Component">
 				<File
 					Id="MainServiceDll"
-					Source="$(var.Templates.WindowsService.TargetDir)\win-x64\publish\Templates.WindowsService.dll"
+					Source="$(var.PublishPath)\$(var.DllName)"
 					Vital="yes"
 					 />
 			</Component>
-			<Component Id="Templates.WindowsService.exe">
+			<Component Id="$(var.ExeName)Component">
 				<util:EventSource
 					Log="Application"
-					Name="Templates WindowsService"
+					Name="$(var.Name)"
 					EventMessageFile="[NETFRAMEWORK40FULLINSTALLROOTDIR]EventLogMessages.dll" />
 				<!-- Copies the exe file using the project reference preprocessor variables -->
 				<File
 					Id="MainServiceExe"
-					Source="$(var.Templates.WindowsService.TargetDir)\win-x64\publish\Templates.WindowsService.exe"
+					Source="$(var.PublishPath)\$(var.ExeName)"
 					Vital="yes"
 					KeyPath="yes" />
 				<!-- Tell WiX to install the Service. -->
 				<ServiceInstall
 					Id="ServiceInstaller"
 					Type="ownProcess"
-					Name="TemplatesWindowsService"
+					Name="$(var.ServiceName)"
 					DisplayName="$(var.Name)"
-					Description="Templates WindowsService !(bind.FileVersion.MainServiceDll)"
+					Description="$(var.Name) !(bind.FileVersion.MainServiceDll)"
 					Start="auto"
 					ErrorControl="normal"
 					Interactive="no"
@@ -74,15 +76,15 @@
 					Id="StartService"
 					Stop="both"
 					Remove="uninstall"
-					Name="TemplatesWindowsService"
+					Name="$(var.ServiceName)"
 					Wait="yes" />
 			</Component>
 		</DirectoryRef>
 		<!-- Tell WiX to install the files -->
 		<Feature Id="MainService" Title="Main Service" Level="1">
-			<ComponentRef Id="Templates.WindowsService.exe" />
-			<ComponentRef Id="Templates.WindowsService.dll" />
-			<ComponentGroupRef Id="TemplatesWindowsService" />
+			<ComponentRef Id="$(var.ExeName)Component" />
+			<ComponentRef Id="$(var.DllName)Component" />
+			<ComponentGroupRef Id="HeatGenerated" />
 		</Feature>
 	</Product>
 </Wix>

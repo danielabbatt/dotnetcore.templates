@@ -749,7 +749,7 @@
         </DirectoryRef>
     </Fragment>
     <Fragment>
-        <ComponentGroup Id="TemplatesWindowsService">
+        <ComponentGroup Id="HeatGenerated">
             <ComponentRef Id="cmpF22D40156F8E16FBFA89C752FF9D0EF9" />
             <ComponentRef Id="cmp742C123932C1A216E185167E7780B396" />
             <ComponentRef Id="cmp0C2E6E9A00C3293AC27A114F5CD9CE2A" />

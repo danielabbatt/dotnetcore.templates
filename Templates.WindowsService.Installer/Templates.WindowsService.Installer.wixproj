@@ -65,7 +65,7 @@
       <DefineConstants>BasePath=..\Templates.WindowsService\bin\$(Configuration)\netcoreapp2.2\win-x64\publish</DefineConstants>
       <LinkerBaseInputPaths>..\Templates.WindowsService\bin\$(Configuration)\netcoreapp2.2\win-x64\publish</LinkerBaseInputPaths>
     </PropertyGroup>
-    <HeatDirectory OutputFile="Generated.wxs" Directory="..\Templates.WindowsService\bin\$(Configuration)\netcoreapp2.2\win-x64\publish" DirectoryRefId="INSTALLFOLDER" ComponentGroupName="TemplatesWindowsService" SuppressCom="true" SuppressFragments="true" SuppressRegistry="true" SuppressRootDirectory="true" AutoGenerateGuids="true" ToolPath="$(WixToolPath)" PreprocessorVariable="var.BasePath" Transforms="HeatFilter.xsl" />
+    <HeatDirectory OutputFile="Generated.wxs" Directory="..\Templates.WindowsService\bin\$(Configuration)\netcoreapp2.2\win-x64\publish" DirectoryRefId="INSTALLFOLDER" ComponentGroupName="HeatGenerated" SuppressCom="true" SuppressFragments="true" SuppressRegistry="true" SuppressRootDirectory="true" AutoGenerateGuids="true" ToolPath="$(WixToolPath)" PreprocessorVariable="var.BasePath" Transforms="HeatFilter.xsl" />
   </Target>
   <UsingTask TaskName="GetFileVersionTask" TaskFactory="CodeTaskFactory" AssemblyFile="$(MSBuildToolsPath)\Microsoft.Build.Tasks.v4.0.dll">
     <ParameterGroup>
