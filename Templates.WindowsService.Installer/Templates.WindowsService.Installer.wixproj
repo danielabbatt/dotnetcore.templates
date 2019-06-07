@@ -35,6 +35,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include=".gitignore" />
     <Content Include="EULA.rtf" />
     <Content Include="HeatFilter.xsl" />
     <Content Include="WixUIBannerBmp.bmp" />
