@@ -28,7 +28,7 @@ namespace Templates.WindowsService
 
 		public Task StartAsync(CancellationToken cancellationToken)
 		{
-			var message = $"Starting Service Version {ThisAssembly.AssemblyInformationalVersion}...";
+			var message = $"Starting Service Version {ThisAssembly.AssemblyFileVersion}...";
 			if (Program.IsRunningAsService)
 			{
 				_eventLog.Information(message);
@@ -46,7 +46,7 @@ namespace Templates.WindowsService
 
 		public async Task StopAsync(CancellationToken cancellationToken)
 		{
-			var message = $"Stopping Service Version {ThisAssembly.AssemblyInformationalVersion}...";
+			var message = $"Stopping Service Version {ThisAssembly.AssemblyFileVersion}...";
 			if (Program.IsRunningAsService)
 			{
 				_eventLog.Information(message);
@@ -61,7 +61,7 @@ namespace Templates.WindowsService
 				finally
 				{
 					await Task.WhenAny(_executingTask, Task.Delay(-1, cancellationToken)).ConfigureAwait(false);
-					message = $"Stopped Service Version {ThisAssembly.AssemblyInformationalVersion}...";
+					message = $"Stopped Service Version {ThisAssembly.AssemblyFileVersion}...";
 					if (Program.IsRunningAsService)
 					{
 						_eventLog.Information(message);
