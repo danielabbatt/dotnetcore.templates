@@ -12,16 +12,30 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		version.json = version.json
 	EndProjectSection
 EndProject
+Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "Templates.WindowsService.Installer", "Templates.WindowsService.Installer\Templates.WindowsService.Installer.wixproj", "{D882B12D-01D5-4029-9067-D441B54F1BB4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		Debug|x86 = Debug|x86
 		Release|Any CPU = Release|Any CPU
+		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{BEFC6C0C-A58B-4F25-B8F9-F2003D80D8B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{BEFC6C0C-A58B-4F25-B8F9-F2003D80D8B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BEFC6C0C-A58B-4F25-B8F9-F2003D80D8B9}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{BEFC6C0C-A58B-4F25-B8F9-F2003D80D8B9}.Debug|x86.Build.0 = Debug|Any CPU
 		{BEFC6C0C-A58B-4F25-B8F9-F2003D80D8B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BEFC6C0C-A58B-4F25-B8F9-F2003D80D8B9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BEFC6C0C-A58B-4F25-B8F9-F2003D80D8B9}.Release|x86.ActiveCfg = Release|Any CPU
+		{BEFC6C0C-A58B-4F25-B8F9-F2003D80D8B9}.Release|x86.Build.0 = Release|Any CPU
+		{D882B12D-01D5-4029-9067-D441B54F1BB4}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{D882B12D-01D5-4029-9067-D441B54F1BB4}.Debug|x86.ActiveCfg = Debug|x86
+		{D882B12D-01D5-4029-9067-D441B54F1BB4}.Debug|x86.Build.0 = Debug|x86
+		{D882B12D-01D5-4029-9067-D441B54F1BB4}.Release|Any CPU.ActiveCfg = Release|x86
+		{D882B12D-01D5-4029-9067-D441B54F1BB4}.Release|x86.ActiveCfg = Release|x86
+		{D882B12D-01D5-4029-9067-D441B54F1BB4}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

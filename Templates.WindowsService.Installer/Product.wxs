@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- The name of the product -->
+<?define Name = "Templates WindowsService" ?>
+<!-- The manufacturer, for setup package publisher and folder info -->
+<?define Manufacturer = "Company Name" ?>
+
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"
+	 xmlns:util="http://schemas.microsoft.com/wix/UtilExtension">
+	<!-- Replace the UpgradeCode below-->
+	<Product Id="*"
+			 Name="$(var.Name) !(bind.FileVersion.MainServiceDll)"
+			 Manufacturer="$(var.Manufacturer)"
+			 UpgradeCode="52FC6D72-B6ED-4BB9-9FCD-1E61CFE78052"
+  			 Version="!(bind.FileVersion.MainServiceDll)"
+			 Language="1033">
+		<Package InstallerVersion="300" Compressed="yes" InstallScope="perMachine" InstallPrivileges="elevated"/>
+		<!-- Create a folder inside Talk Sharp called Test Service -->
+		<Media Id="1" Cabinet="product.cab" EmbedCab="yes" />
+		<!-- Allow upgrades and prevent downgrades -->
+		<MajorUpgrade DowngradeErrorMessage="A later version of [ProductName] is already installed. Setup will now exit." />
+
+		<InstallExecuteSequence>
+			<DeleteServices><![CDATA[NOT UPGRADINGPRODUCTCODE]]></DeleteServices>
+		</InstallExecuteSequence>
+
+		<PropertyRef Id="NETFRAMEWORK40FULLINSTALLROOTDIR"/>
+
+		<WixVariable Id="WixUILicenseRtf" Value="EULA.rtf" />
+		<WixVariable Id="WixUIBannerBmp" Value="WixUIBannerBmp.bmp" />
+		<WixVariable Id="WixUIDialogBmp" Value="WixUIDialogBmp.bmp" />
+		<UIRef Id="WixUI_Minimal" />
+
+		<!-- Define the directory structure -->
+		<Directory Id="TARGETDIR" Name="SourceDir">
+			<Directory Id="ProgramFilesFolder">
+				<!-- Create a folder inside that for the name -->
+				<Directory Id="INSTALLFOLDER" Name="$(var.Name)" />
+			</Directory>
+		</Directory>
+		<!-- The files inside this DirectoryRef are linked to the Test Service directory via INSTALLFOLDER -->
+		<DirectoryRef Id="INSTALLFOLDER">
+			<Component Id="Templates.WindowsService.dll">
+				<File
+					Id="MainServiceDll"
+					Source="$(var.Templates.WindowsService.TargetDir)\win-x64\publish\Templates.WindowsService.dll"
+					Vital="yes"
+					 />
+			</Component>
+			<Component Id="Templates.WindowsService.exe">
+				<util:EventSource
+					Log="Application"
+					Name="Templates WindowsService"
+					EventMessageFile="[NETFRAMEWORK40FULLINSTALLROOTDIR]EventLogMessages.dll" />
+				<!-- Copies the exe file using the project reference preprocessor variables -->
+				<File
+					Id="MainServiceExe"
+					Source="$(var.Templates.WindowsService.TargetDir)\win-x64\publish\Templates.WindowsService.exe"
+					Vital="yes"
+					KeyPath="yes" />
+				<!-- Tell WiX to install the Service. -->
+				<ServiceInstall
+					Id="ServiceInstaller"
+					Type="ownProcess"
+					Name="TemplatesWindowsService"
+					DisplayName="$(var.Name)"
+					Description="Templates WindowsService !(bind.FileVersion.MainServiceDll)"
+					Start="auto"
+					ErrorControl="normal"
+					Interactive="no"
+					Vital="yes"
+					/>
+				<!-- Tell WiX to stop the Service on uninstall but not start on install so it can be configured before starting. -->
+				<ServiceControl
+					Id="StartService"
+					Stop="both"
+					Remove="uninstall"
+					Name="TemplatesWindowsService"
+					Wait="yes" />
+			</Component>
+		</DirectoryRef>
+		<!-- Tell WiX to install the files -->
+		<Feature Id="MainService" Title="Main Service" Level="1">
+			<ComponentRef Id="Templates.WindowsService.exe" />
+			<ComponentRef Id="Templates.WindowsService.dll" />
+			<ComponentGroupRef Id="TemplatesWindowsService" />
+		</Feature>
+	</Product>
+</Wix>
