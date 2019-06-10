@@ -1,4 +1,5 @@
 using Microsoft.Extensions.Hosting;
+using Serilog;
 using System;
 using System.Diagnostics;
 using System.IO;
@@ -23,13 +24,29 @@ namespace Templates.WindowsService
 		{
 			try
 			{
+				Serilog.Debugging.SelfLog.Enable(msg =>
+				{
+					Debug.WriteLine(msg);
+					Console.Error.WriteLine(msg);
+				});
+
+				// Set up initial basic logging to trap errors starting up
+				var loggerConfiguration = new LoggerConfiguration().WriteTo.Console();
+
 				if (IsRunningAsService)
 				{
 					// Update paths to refer to where the service is loaded from for loading config files
 					var pathToExe = Process.GetCurrentProcess().MainModule.FileName;
 					var pathToContentRoot = Path.GetDirectoryName(pathToExe);
 					Directory.SetCurrentDirectory(pathToContentRoot);
+
+					loggerConfiguration.WriteTo.EventLog(
+						Program.ProductName,
+						eventIdProvider: new SerilogEventLogIdProvider(),
+						manageEventSource: true);
 				}
+
+				Log.Logger = loggerConfiguration.CreateLogger();
 
 				var host = new HostBuilder()
 					.ConfigureAppConfiguration(configurationBuilder => Startup.BuildConfig(configurationBuilder, args))
@@ -50,12 +67,12 @@ namespace Templates.WindowsService
 			catch (OperationCanceledException)
 			{
 				// This is normal for using CTRL+C to exit the run
-				Console.WriteLine("** Execution run cancelled - exiting **");
+				Log.Error("** Execution run cancelled - exiting **");
 				return (int)ExitCode.RunCancelled;
 			}
 			catch (ConfigurationException ex)
 			{
-				Console.WriteLine("**" + ex.Message + "**");
+				Log.Error("**" + ex.Message + "**");
 				return (int)ExitCode.ConfigurationException;
 			}
 			catch (Exception ex)
@@ -63,8 +80,12 @@ namespace Templates.WindowsService
 				var dumpPath = Path.GetTempPath();
 				var dumpFile = $"{ProductName}-Error-{Guid.NewGuid()}.txt";
 				File.WriteAllText(Path.Combine(dumpPath, dumpFile), ex.ToString());
-				Console.WriteLine(ex.Message);
+				Log.Error(ex.Message);
 				return (int)ExitCode.UnexpectedException;
+			}
+			finally
+			{
+				Log.CloseAndFlush();
 			}
 		}
 	}

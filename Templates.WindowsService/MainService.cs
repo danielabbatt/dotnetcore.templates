@@ -10,7 +10,6 @@ namespace Templates.WindowsService
 {
 	public class MainService : IHostedService, IDisposable
 	{
-		private const string EventLogSourceName = Program.ProductName;
 		private readonly Microsoft.Extensions.Logging.ILogger _logger;
 		private readonly Logger _eventLog;
 		private Task _executingTask;
@@ -21,7 +20,7 @@ namespace Templates.WindowsService
 		{
 			_logger = logger;
 			_eventLog = new LoggerConfiguration()
-				.WriteTo.EventLog(EventLogSourceName, eventIdProvider: new SerilogEventLogIdProvider(), manageEventSource: true)
+				.WriteTo.EventLog(Program.ProductName, eventIdProvider: new SerilogEventLogIdProvider(), manageEventSource: true)
 				.CreateLogger();
 			_application = application;
 		}

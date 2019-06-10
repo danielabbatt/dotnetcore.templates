@@ -4,9 +4,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Serilog;
 using Serilog.Events;
-using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using Templates.WindowsService.Models;
 
@@ -36,12 +34,6 @@ namespace Templates.WindowsService
 
 		internal static void ConfigureLogging(HostBuilderContext context, ILoggingBuilder builder)
 		{
-			Serilog.Debugging.SelfLog.Enable(msg =>
-			{
-				Debug.WriteLine(msg);
-				Console.Error.WriteLine(msg);
-			});
-
 			// Set up SeriLog
 			var config = context.Configuration.GetSection("Logging");
 			var loggerConfiguration = new LoggerConfiguration()
