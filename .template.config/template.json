@@ -1,0 +1,40 @@
+{
+	"$schema": "http://json.schemastore.org/template",
+	"identity": "PanoramicSystems.Templates.WindowsService",
+	"groupIdentity": "PanoramicSystems.Templates",
+	"author": "Panoramic Systems Ltd",
+	"classifications": [ "Console", "Windows Service", "Installer" ],
+	"name": "Windows service with installer",
+	"shortName": "windowsservice",
+	"tags": {
+		"language": "C#",
+		"type": "project"
+	},
+	"sourceName": "Templates.WindowsService",
+	"preferNameDirectory": true,
+	"sources": [
+		{
+		"modifiers": [
+			{	
+				"exclude": [
+					"**/.vs/**",
+					"**/.git/**",
+					"**/.nuspec"
+				]
+			}
+			]
+		}
+	],
+	"xsymbols": {
+		"copyrightName": {
+			"type": "parameter",
+			"defaultValue": "John Smith",
+			"replaces": "Contoso"
+		},
+		"title": {
+			"type": "parameter",
+			"defaultValue": "Hello World from dotnet new",
+			"replaces": "Hello World"
+		}
+	}
+}

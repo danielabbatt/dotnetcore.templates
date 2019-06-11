@@ -1,2 +1,2 @@
-# dotnetcore.templates
-dotnet core templates
+# Windows Service with installer
+Add description here
