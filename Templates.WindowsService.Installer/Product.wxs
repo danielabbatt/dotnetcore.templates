@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?define Manufacturer = "Company Name" ?>
-<?define Name = "Templates WindowsService" ?>
-<?define ServiceName = "TemplatesWindowsService" ?>
+<?define Name = "Templates.WindowsService" ?>
+<?define ServiceName = "Templates.WindowsService" ?>
 <?define DllName = "Templates.WindowsService.dll" ?>
 <?define ExeName = "Templates.WindowsService.exe" ?>
 <?define PublishPath = "$(var.Templates.WindowsService.TargetDir)\win-x64\publish" ?>

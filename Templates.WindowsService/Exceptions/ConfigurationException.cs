@@ -1,6 +1,6 @@
-﻿using System;
+using System;
 
-namespace WindowsService.Exceptions
+namespace Templates.WindowsService.Exceptions
 {
 	public class ConfigurationException : Exception
 	{

@@ -14,27 +14,20 @@
 	"preferNameDirectory": true,
 	"sources": [
 		{
-		"modifiers": [
-			{	
-				"exclude": [
-					"**/.vs/**",
-					"**/.git/**",
-					"**/.nuspec"
-				]
-			}
+			"modifiers": [
+				{
+					"exclude": [
+						"**/[Bb]in/**",
+						"**/[Oo]bj/**",
+						"**/.vs/**",
+						"**/.git/**",
+						"**/.nuspec"
+					]
+				}
 			]
 		}
 	],
-	"xsymbols": {
-		"copyrightName": {
-			"type": "parameter",
-			"defaultValue": "John Smith",
-			"replaces": "Contoso"
-		},
-		"title": {
-			"type": "parameter",
-			"defaultValue": "Hello World from dotnet new",
-			"replaces": "Hello World"
-		}
-	}
+	"guids": [
+		"52FC6D72-B6ED-4BB9-9FCD-1E61CFE78052"
+	]
 }
