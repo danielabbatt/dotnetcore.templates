@@ -1,0 +1,1 @@
+nuget pack PanoramicSystems.Templates.WindowsService.nuspec
