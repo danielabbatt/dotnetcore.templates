@@ -19,9 +19,13 @@ namespace Templates.WindowsService
 		public MainService(ILogger<MainService> logger, Application application)
 		{
 			_logger = logger;
-			_eventLog = new LoggerConfiguration()
+			// Only create an eventLog logger if running as a service
+			if (Program.IsRunningAsService)
+			{
+				_eventLog = new LoggerConfiguration()
 				.WriteTo.EventLog(Program.ProductName, eventIdProvider: new SerilogEventLogIdProvider(), manageEventSource: true)
 				.CreateLogger();
+			}
 			_application = application;
 		}
 
