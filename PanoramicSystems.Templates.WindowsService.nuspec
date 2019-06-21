@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>PanoramicSystems.Templates.WindowsService</id>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     <description>
       Creates a default Windows Service with WIX installer.
     </description>
@@ -10,6 +10,7 @@
     <packageTypes>
       <packageType name="Template" />
     </packageTypes>
+    <iconUrl>https://en.gravatar.com/userimage/33568853/8935cd04180f2c2e1c639cd310b60875.png?size=200</iconUrl>
   </metadata>
   <files>
     <file src="*\**" target="\" exclude="**\obj\**\*.*;**\bin\**\*.*"/>
