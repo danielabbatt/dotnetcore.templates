@@ -3,14 +3,26 @@
   <metadata>
     <id>PanoramicSystems.Templates.WindowsService</id>
     <version>1.0.1</version>
+    <title>PanoramicSystems.Templates.WindowsService</title>
     <description>
       Creates a default Windows Service with WIX installer.
     </description>
+    <summary>
+      Creates a default Windows Service with WIX installer. Can also be executed as a long running console application.
+    </summary>
     <authors>Daniel Abbatt</authors>
     <packageTypes>
       <packageType name="Template" />
     </packageTypes>
     <iconUrl>https://en.gravatar.com/userimage/33568853/8935cd04180f2c2e1c639cd310b60875.png?size=200</iconUrl>
+    <license type="expression">MIT</license>
+    <copyright>PanoramicSystems Ltd</copyright>
+    <releaseNotes>
+      - Added documentation page and changelog
+      - Initial service class was always creating an event logger, event if the application was running at console and not as a service. This has been fixed.
+    </releaseNotes>
+    <repository type="git" url="https://github.com/panoramicsystems/PanoramicSystems.Templates.WindowsService" />
+    <tags>template windows service</tags>
   </metadata>
   <files>
     <file src="*\**" target="\" exclude="**\obj\**\*.*;**\bin\**\*.*"/>
