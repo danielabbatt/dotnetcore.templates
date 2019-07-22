@@ -1,0 +1,6 @@
+﻿# Never store/distribute a real file used during development
+appsettings.json
+# Don't store any environment based appsettings files.
+appsettings.*.json
+# Keep the example file
+!appsettings.example.json

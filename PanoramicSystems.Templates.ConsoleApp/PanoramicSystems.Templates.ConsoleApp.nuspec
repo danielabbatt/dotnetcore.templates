@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>PanoramicSystems.Templates.ConsoleApp</id>
+    <version>1.0.1</version>
+    <title>PanoramicSystems.Templates.ConsoleApp</title>
+    <description>
+      Creates a default Console application.
+    </description>
+    <summary>
+      Creates a default Console application.
+    </summary>
+    <authors>Daniel Abbatt</authors>
+    <packageTypes>
+      <packageType name="Template" />
+    </packageTypes>
+    <iconUrl>https://en.gravatar.com/userimage/33568853/8935cd04180f2c2e1c639cd310b60875.png?size=200</iconUrl>
+    <license type="expression">MIT</license>
+    <copyright>PanoramicSystems Ltd</copyright>
+    <releaseNotes>
+      - Initial release
+    </releaseNotes>
+    <repository type="git" url="https://github.com/panoramicsystems/PanoramicSystems.DotNetTemplates/PanoramicSystems.Templates.ConsoleApp" />
+    <tags>template console</tags>
+  </metadata>
+  <files>
+    <file src="*\**" target="\" exclude="**\obj\**\*.*;**\bin\**\*.*"/>
+</files>
+</package>
