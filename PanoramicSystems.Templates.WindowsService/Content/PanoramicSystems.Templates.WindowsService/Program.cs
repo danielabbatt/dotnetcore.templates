@@ -1,10 +1,10 @@
 using Microsoft.Extensions.Hosting;
+using PanoramicSystems.Templates.WindowsService.Exceptions;
 using Serilog;
 using System;
 using System.Diagnostics;
 using System.IO;
 using System.Threading.Tasks;
-using PanoramicSystems.Templates.WindowsService.Exceptions;
 
 namespace PanoramicSystems.Templates.WindowsService
 {
@@ -41,7 +41,7 @@ namespace PanoramicSystems.Templates.WindowsService
 					Directory.SetCurrentDirectory(pathToContentRoot);
 
 					loggerConfiguration.WriteTo.EventLog(
-						Program.ProductName,
+						ProductName,
 						eventIdProvider: new SerilogEventLogIdProvider(),
 						manageEventSource: true);
 				}
@@ -62,18 +62,18 @@ namespace PanoramicSystems.Templates.WindowsService
 					await host.RunConsoleAsync().ConfigureAwait(false);
 				}
 
-				return (int)ExitCode.Ok;
+				return ExitCode.Ok;
 			}
 			catch (OperationCanceledException)
 			{
 				// This is normal for using CTRL+C to exit the run
 				Log.Error("** Execution run cancelled - exiting **");
-				return (int)ExitCode.RunCancelled;
+				return ExitCode.RunCancelled;
 			}
 			catch (ConfigurationException ex)
 			{
 				Log.Error("**" + ex.Message + "**");
-				return (int)ExitCode.ConfigurationException;
+				return ExitCode.ConfigurationException;
 			}
 			catch (Exception ex)
 			{
@@ -81,7 +81,7 @@ namespace PanoramicSystems.Templates.WindowsService
 				var dumpFile = $"{ProductName}-Error-{Guid.NewGuid()}.txt";
 				File.WriteAllText(Path.Combine(dumpPath, dumpFile), ex.ToString());
 				Log.Error(ex.Message);
-				return (int)ExitCode.UnexpectedException;
+				return ExitCode.UnexpectedException;
 			}
 			finally
 			{

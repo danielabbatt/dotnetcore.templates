@@ -1,8 +1,10 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using PanoramicSystems.Templates.ConsoleApp.Models;
+using PanoramicSystems.Templates.ConsoleApp.Models.Exceptions;
 using Serilog;
 using System;
+using System.Diagnostics;
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
@@ -11,8 +13,14 @@ namespace PanoramicSystems.Templates.ConsoleApp
 {
 	internal static class Program
 	{
-		private static async Task Main(string[] args)
+		private static async Task<int> Main(string[] args)
 		{
+			Serilog.Debugging.SelfLog.Enable(msg =>
+			{
+				Debug.WriteLine(msg);
+				Console.Error.WriteLine(msg);
+			});
+
 			// Set up basic logging
 			Log.Logger = new LoggerConfiguration()
 				.WriteTo.Console()
@@ -38,10 +46,20 @@ namespace PanoramicSystems.Templates.ConsoleApp
 				Console.WriteLine("STARTING APP");
 				await serviceProvider.GetService<IApplicationName>().RunAsync(cancellationTokenSource.Token).ConfigureAwait(false);
 				Console.WriteLine("DONE");
+				return ExitCode.Ok;
 			}
-			catch (Exception e)
+			catch (ConfigurationException ex)
 			{
-				Log.Error(e, e.Message);
+				Log.Error("**" + ex.Message + "**");
+				return ExitCode.ConfigurationException;
+			}
+			catch (Exception ex)
+			{
+				var dumpPath = Path.GetTempPath();
+				var dumpFile = $"ApplicationName-Error-{Guid.NewGuid()}.txt";
+				File.WriteAllText(Path.Combine(dumpPath, dumpFile), ex.ToString());
+				Log.Error(ex.Message);
+				return ExitCode.UnexpectedException;
 			}
 			finally
 			{
