@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?define Manufacturer = "Company Name" ?>
-<?define Name = "PanoramicSystems.Templates.WindowsService" ?>
-<?define ServiceName = "PanoramicSystems.Templates.WindowsService" ?>
-<?define DllName = "PanoramicSystems.Templates.WindowsService.dll" ?>
-<?define ExeName = "PanoramicSystems.Templates.WindowsService.exe" ?>
-<?define PublishPath = "$(var.PanoramicSystems.Templates.WindowsService.TargetDir)\win-x64\publish" ?>
+<?define Name = "Templates.WindowsService" ?>
+<?define ServiceName = "Templates.WindowsService" ?>
+<?define DllName = "Templates.WindowsService.dll" ?>
+<?define ExeName = "Templates.WindowsService.exe" ?>
+<?define PublishPath = "$(var.Templates.WindowsService.TargetDir)\win-x64\publish" ?>
 
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"
 	 xmlns:util="http://schemas.microsoft.com/wix/UtilExtension">

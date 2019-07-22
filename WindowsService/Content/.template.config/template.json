@@ -10,7 +10,7 @@
 		"language": "C#",
 		"type": "project"
 	},
-	"sourceName": "PanoramicSystems.Templates.WindowsService",
+	"sourceName": "Templates.WindowsService",
 	"preferNameDirectory": true,
 	"sources": [
 		{

@@ -1,4 +1,4 @@
-namespace PanoramicSystems.Templates.WindowsService.Models
+namespace Templates.WindowsService.Models
 {
 	/// <summary>
 	/// Integrator Configuration

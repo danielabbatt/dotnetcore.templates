@@ -3,7 +3,7 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace PanoramicSystems.Templates.WindowsService
+namespace Templates.WindowsService
 {
 	public class Application
 	{

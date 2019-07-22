@@ -1,4 +1,4 @@
-namespace PanoramicSystems.Templates.WindowsService
+namespace Templates.WindowsService
 {
 	internal static class ExitCode
 	{

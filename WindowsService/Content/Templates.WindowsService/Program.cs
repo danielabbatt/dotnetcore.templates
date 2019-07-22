@@ -1,12 +1,12 @@
 using Microsoft.Extensions.Hosting;
-using PanoramicSystems.Templates.WindowsService.Exceptions;
+using Templates.WindowsService.Exceptions;
 using Serilog;
 using System;
 using System.Diagnostics;
 using System.IO;
 using System.Threading.Tasks;
 
-namespace PanoramicSystems.Templates.WindowsService
+namespace Templates.WindowsService
 {
 	/// <summary>
 	/// The main console application

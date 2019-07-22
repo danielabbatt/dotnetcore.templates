@@ -1,7 +1,7 @@
 using Serilog.Events;
 using Serilog.Sinks.EventLog;
 
-namespace PanoramicSystems.Templates.WindowsService
+namespace Templates.WindowsService
 {
 	public class SerilogEventLogIdProvider : IEventIdProvider
 	{

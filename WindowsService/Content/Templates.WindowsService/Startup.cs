@@ -6,9 +6,9 @@ using Serilog;
 using Serilog.Events;
 using System.Collections.Generic;
 using System.IO;
-using PanoramicSystems.Templates.WindowsService.Models;
+using Templates.WindowsService.Models;
 
-namespace PanoramicSystems.Templates.WindowsService
+namespace Templates.WindowsService
 {
 	internal static class Startup
 	{

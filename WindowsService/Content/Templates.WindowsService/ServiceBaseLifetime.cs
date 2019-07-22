@@ -4,7 +4,7 @@ using System.ServiceProcess;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace PanoramicSystems.Templates.WindowsService
+namespace Templates.WindowsService
 {
 	// https://github.com/aspnet/Hosting/blob/2a98db6a73512b8e36f55a1e6678461c34f4cc4d/samples/GenericHostSample/ServiceBaseLifetime.cs
 
