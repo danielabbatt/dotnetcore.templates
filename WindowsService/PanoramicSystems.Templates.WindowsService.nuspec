@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>PanoramicSystems.Templates.WindowsService</id>
-    <version>1.0.1</version>
+    <version>1.0.3</version>
     <title>PanoramicSystems.Templates.WindowsService</title>
     <description>
       Creates a default Windows Service with WIX installer.
@@ -18,8 +18,7 @@
     <license type="expression">MIT</license>
     <copyright>PanoramicSystems Ltd</copyright>
     <releaseNotes>
-      - Added documentation page and changelog
-      - Initial service class was always creating an event logger, event if the application was running at console and not as a service. This has been fixed.
+      - Added details to dotnet template display name to more easily identify
     </releaseNotes>
     <repository type="git" url="https://github.com/panoramicsystems/PanoramicSystems.DotNetTemplates" />
     <tags>template windows service</tags>

@@ -4,7 +4,7 @@
 	"groupIdentity": "PanoramicSystems.Templates",
 	"author": "Panoramic Systems Ltd",
 	"classifications": [ "Console" ],
-	"name": "Console application",
+	"name": "Console application (Panoramic Systems)",
 	"shortName": "consoleapp",
 	"tags": {
 		"language": "C#",

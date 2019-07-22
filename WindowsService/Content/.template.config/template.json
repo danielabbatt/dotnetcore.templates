@@ -4,7 +4,7 @@
 	"groupIdentity": "PanoramicSystems.Templates",
 	"author": "Panoramic Systems Ltd",
 	"classifications": [ "Console", "Windows Service", "Installer" ],
-	"name": "Windows service with installer",
+	"name": "Windows service with installer (Panoramic Systems)",
 	"shortName": "windowsservice",
 	"tags": {
 		"language": "C#",
