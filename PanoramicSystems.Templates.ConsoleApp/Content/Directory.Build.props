@@ -1,0 +1,7 @@
+﻿<Project>
+	<PropertyGroup>
+		<Description>ApplicationName console application</Description>
+		<Copyright>Copyright (c) 2019</Copyright>
+		<LangVersion>7.3</LangVersion>
+	</PropertyGroup>
+</Project>
