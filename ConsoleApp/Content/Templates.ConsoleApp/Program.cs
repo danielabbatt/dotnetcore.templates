@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using PanoramicSystems.Templates.ConsoleApp.Models;
-using PanoramicSystems.Templates.ConsoleApp.Models.Exceptions;
+using Templates.ConsoleApp.Models;
+using Templates.ConsoleApp.Models.Exceptions;
 using Serilog;
 using System;
 using System.Diagnostics;
@@ -9,7 +9,7 @@ using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace PanoramicSystems.Templates.ConsoleApp
+namespace Templates.ConsoleApp
 {
 	internal static class Program
 	{

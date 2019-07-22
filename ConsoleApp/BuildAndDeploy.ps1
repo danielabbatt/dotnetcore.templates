@@ -1,1 +1,1 @@
-nuget pack PanoramicSystems.Templates.ConsoleApp.nuspec
+nuget pack Templates.ConsoleApp.nuspec

@@ -1,4 +1,4 @@
-# PanoramicSystems.Templates.ConsoleApp
+# Templates.ConsoleApp
 
 Documentation Pending...
 

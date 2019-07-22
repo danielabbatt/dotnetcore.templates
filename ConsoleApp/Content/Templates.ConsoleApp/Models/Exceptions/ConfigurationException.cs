@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace PanoramicSystems.Templates.ConsoleApp.Models.Exceptions
+namespace Templates.ConsoleApp.Models.Exceptions
 {
 	public class ConfigurationException : Exception
 	{

@@ -1,4 +1,4 @@
-﻿namespace PanoramicSystems.Templates.ConsoleApp.Models
+﻿namespace Templates.ConsoleApp.Models
 {
 	public class Configuration
 	{
