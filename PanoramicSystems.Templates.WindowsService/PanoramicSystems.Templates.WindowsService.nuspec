@@ -21,7 +21,7 @@
       - Added documentation page and changelog
       - Initial service class was always creating an event logger, event if the application was running at console and not as a service. This has been fixed.
     </releaseNotes>
-    <repository type="git" url="https://github.com/panoramicsystems/PanoramicSystems.Templates.WindowsService" />
+    <repository type="git" url="https://github.com/panoramicsystems/PanoramicSystems.DotNetTemplates" />
     <tags>template windows service</tags>
   </metadata>
   <files>

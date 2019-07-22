@@ -20,7 +20,7 @@
     <releaseNotes>
       - Initial release
     </releaseNotes>
-    <repository type="git" url="https://github.com/panoramicsystems/PanoramicSystems.DotNetTemplates/PanoramicSystems.Templates.ConsoleApp" />
+    <repository type="git" url="https://github.com/panoramicsystems/PanoramicSystems.DotNetTemplates/tree/master/PanoramicSystems.Templates.ConsoleApp" />
     <tags>template console</tags>
   </metadata>
   <files>
