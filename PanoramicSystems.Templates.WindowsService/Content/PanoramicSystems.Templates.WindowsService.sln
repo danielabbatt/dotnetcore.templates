@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.28922.388
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Templates.WindowsService", "Templates.WindowsService\Templates.WindowsService.csproj", "{BEFC6C0C-A58B-4F25-B8F9-F2003D80D8B9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PanoramicSystems.Templates.WindowsService", "PanoramicSystems.Templates.WindowsService\PanoramicSystems.Templates.WindowsService.csproj", "{BEFC6C0C-A58B-4F25-B8F9-F2003D80D8B9}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{34F586E6-1CA7-4A54-824D-039B30D0EFA2}"
 	ProjectSection(SolutionItems) = preProject
@@ -12,7 +12,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		version.json = version.json
 	EndProjectSection
 EndProject
-Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "Templates.WindowsService.Installer", "Templates.WindowsService.Installer\Templates.WindowsService.Installer.wixproj", "{D882B12D-01D5-4029-9067-D441B54F1BB4}"
+Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "PanoramicSystems.Templates.WindowsService.Installer", "PanoramicSystems.Templates.WindowsService.Installer\PanoramicSystems.Templates.WindowsService.Installer.wixproj", "{D882B12D-01D5-4029-9067-D441B54F1BB4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -4,9 +4,9 @@ using System;
 using System.Diagnostics;
 using System.IO;
 using System.Threading.Tasks;
-using Templates.WindowsService.Exceptions;
+using PanoramicSystems.Templates.WindowsService.Exceptions;
 
-namespace Templates.WindowsService
+namespace PanoramicSystems.Templates.WindowsService
 {
 	/// <summary>
 	/// The main console application

@@ -4,7 +4,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Threading.Tasks;
 
-namespace Templates.WindowsService
+namespace PanoramicSystems.Templates.WindowsService
 {
 	internal enum ExitCode
 	{

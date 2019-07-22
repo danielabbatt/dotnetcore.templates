@@ -6,7 +6,7 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Templates.WindowsService
+namespace PanoramicSystems.Templates.WindowsService
 {
 	public class MainService : IHostedService, IDisposable
 	{

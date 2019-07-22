@@ -1,6 +1,6 @@
 using System;
 
-namespace Templates.WindowsService.Exceptions
+namespace PanoramicSystems.Templates.WindowsService.Exceptions
 {
 	public class ConfigurationException : Exception
 	{
