@@ -1,13 +1,13 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Templates.ConsoleApp.Models;
-using Templates.ConsoleApp.Models.Exceptions;
 using Serilog;
 using System;
 using System.Diagnostics;
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
+using Templates.ConsoleApp.Models;
+using Templates.ConsoleApp.Models.Exceptions;
 
 namespace Templates.ConsoleApp
 {
@@ -42,9 +42,14 @@ namespace Templates.ConsoleApp
 					.Enrich.FromLogContext()
 					.CreateLogger();
 
-				var cancellationTokenSource = new CancellationTokenSource();
+				using var cancellationTokenSource = new CancellationTokenSource();
 				Console.WriteLine("STARTING APP");
-				await serviceProvider.GetService<IApplicationName>().RunAsync(cancellationTokenSource.Token).ConfigureAwait(false);
+
+				await serviceProvider
+					.GetService<IApplicationName>()
+					.RunAsync(cancellationTokenSource.Token)
+					.ConfigureAwait(false);
+
 				Console.WriteLine("DONE");
 				return ExitCode.Ok;
 			}

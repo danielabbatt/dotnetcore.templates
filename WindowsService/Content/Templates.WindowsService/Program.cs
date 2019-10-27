@@ -1,10 +1,10 @@
 using Microsoft.Extensions.Hosting;
-using Templates.WindowsService.Exceptions;
 using Serilog;
 using System;
 using System.Diagnostics;
 using System.IO;
 using System.Threading.Tasks;
+using Templates.WindowsService.Exceptions;
 
 namespace Templates.WindowsService
 {
@@ -55,11 +55,18 @@ namespace Templates.WindowsService
 
 				if (IsRunningAsService)
 				{
-					await host.RunAsServiceAsync().ConfigureAwait(false);
+					var windowsServiceHost = host
+						.UseWindowsService()
+						.Build();
+					await windowsServiceHost
+						.RunAsync()
+						.ConfigureAwait(false);
 				}
 				else
 				{
-					await host.RunConsoleAsync().ConfigureAwait(false);
+					await host
+						.RunConsoleAsync()
+						.ConfigureAwait(false);
 				}
 
 				return ExitCode.Ok;
