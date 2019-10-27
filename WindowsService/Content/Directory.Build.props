@@ -2,6 +2,6 @@
 	<PropertyGroup>
 		<Description>A long running application hosted as a Windows Service</Description>
 		<Copyright>Copyright (c) 2019</Copyright>
-		<LangVersion>7.3</LangVersion>
+		<LangVersion>8.0</LangVersion>
 	</PropertyGroup>
 </Project>

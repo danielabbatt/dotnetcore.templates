@@ -78,7 +78,8 @@ namespace Templates.WindowsService
 		{
 			_logger.LogInformation("Disposed.");
 			_stoppingCts.Cancel();
-			//base.Dispose();
+			_stoppingCts.Dispose();
+			_eventLog?.Dispose();
 		}
 	}
 }
