@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>PanoramicSystems.Templates.WindowsService</id>
-    <version>1.0.3</version>
+    <version>1.0.4</version>
     <title>PanoramicSystems.Templates.WindowsService</title>
     <description>
       Creates a default Windows Service with WIX installer.
@@ -16,9 +16,9 @@
     </packageTypes>
     <iconUrl>https://en.gravatar.com/userimage/33568853/8935cd04180f2c2e1c639cd310b60875.png?size=200</iconUrl>
     <license type="expression">MIT</license>
-    <copyright>PanoramicSystems Ltd</copyright>
+    <copyright>Panoramic Systems Ltd</copyright>
     <releaseNotes>
-      - Added details to dotnet template display name to more easily identify
+      - Updated to .NET Core 3.0 and C# 8.0
     </releaseNotes>
     <repository type="git" url="https://github.com/panoramicsystems/PanoramicSystems.DotNetTemplates" />
     <tags>template windows service</tags>

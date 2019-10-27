@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>PanoramicSystems.Templates.ConsoleApp</id>
-    <version>1.0.1</version>
+    <version>1.0.2</version>
     <title>PanoramicSystems.Templates.ConsoleApp</title>
     <description>
       Creates a default Console application.
@@ -16,9 +16,9 @@
     </packageTypes>
     <iconUrl>https://en.gravatar.com/userimage/33568853/8935cd04180f2c2e1c639cd310b60875.png?size=200</iconUrl>
     <license type="expression">MIT</license>
-    <copyright>PanoramicSystems Ltd</copyright>
+    <copyright>Panoramic Systems Ltd</copyright>
     <releaseNotes>
-      - Initial release
+      - Updated to .NET Core 3.0 and C# 8.0
     </releaseNotes>
     <repository type="git" url="https://github.com/panoramicsystems/PanoramicSystems.DotNetTemplates" />
     <tags>template console</tags>
