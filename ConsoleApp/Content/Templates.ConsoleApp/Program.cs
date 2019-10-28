@@ -43,7 +43,7 @@ namespace Templates.ConsoleApp
 					.CreateLogger();
 
 				using var cancellationTokenSource = new CancellationTokenSource();
-				Console.WriteLine("STARTING APP");
+				Console.WriteLine($"STARTING APP with args: {string.Join(", ", args)}");
 
 				await serviceProvider
 					.GetService<IApplicationName>()
